@@ -27,7 +27,7 @@ class tipos_de_dato {
             Double 64bits
             Long 64bits
             Float 32bits
-            Int 32bits 4294967296 
+            Int 32bits 4294967296
             Short 16bits
             Byte 8bits
             char 8bits -128 a 127
