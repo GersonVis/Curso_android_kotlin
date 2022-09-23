@@ -15,10 +15,13 @@ class tipos_de_dato {
         // la variable pasa a ser de tipo estring, este tipo de dato en su inicialización será
         // el tipo de dato en sus futuros usos y no lo podremos cambiar si asignamos string siempre
         // tendrá que almacenar string
-        var nombre="gerson"//   asignación automatica del tipo de dato
+        var nombre="gerson"/*   asignación automatica del tipo de dato*/
         var edad: Int =5// tipo de dato declarado en la asignación
         // nos marca de amarillo por que hay una forma de hacer lo mimo pero más simple
-        var fecha: String // tercera forma de asignacion de variables
+        var fecha: String /*tercera forma de asignacion de variables
+        en los string cada letra tiene una posición en la cadena esta asignación de posiciones
+        comienza en la posición 0
+        */
 
         fecha= "13 Enero 99"
 
