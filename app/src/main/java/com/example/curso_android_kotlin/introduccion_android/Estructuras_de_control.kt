@@ -49,21 +49,24 @@ class Estructuras_de_control {
             }
         }
 
-        // con llaves
-        if (vip){
-            println("el vip es verdadero")
-        }
-        else {
-            println("el vip es falso")
-        }
+        //BUCLE DO WHILE
+        /*
+        El bucle do while se ejecuta una vez si es verdadero continua ejecutandose
+        */
+        // cuando una aplicación entra en un bucle infinito android lo detecta y fuerza un cierre
+        var intentos:Int=1
+        var pin:Int=12345
+        var pin_introducido=12344
+        do{
+            // encerrar entre llaves sicnifica una expresión propia
+            println("número de intentos: $intentos restantes ${3-intentos}")
+            if(pin==pin_introducido++){
+                println("pin introducido correctamente")
+                break//provoca una salida del bucle
+            }
+
+        }while(++intentos<=3)// solo se ejecutara una vez
 
 
-
-        for (t in 1..10) {
-
-        }
-        while (3 > 0) {
-
-        }
     }
 }
