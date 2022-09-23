@@ -9,7 +9,46 @@ class Estructuras_de_control {
         if (vip) println("el vip es verdadero")
         else println("el vip es falso")
 
-        
+
+
+        // USO DE WHEN
+        var fecha="05/06/1990"
+
+        // obtenemos el mes de la fecha, y convertimos en número
+        var mes:Int=fecha.subSequence(3, 5).toString().toInt()
+        var especifidad:Int=13
+        println(mes)
+        //entre parentesis la opción a comprobar
+        when(mes){
+            1->{
+                println("Enero")
+            }
+            2->{
+                println("Febrero")
+            }
+            in(3..12)->{
+                println("No declarado todavía")
+            }
+            especifidad->{
+                println("mes trece")
+            }
+            // para cuando no se cumple ningún caso
+            else->println("no existe ese número de mes")
+        }
+
+        when(mes){
+            1,2,3,4,5,6->{
+                println("primer semestre")
+            }
+            7,8,9,10,11,12->{
+                println("segundo semestre")
+            }
+            // para cuando no se cumple ningún caso
+            else->{
+                println("fuera del rango")
+            }
+        }
+
         // con llaves
         if (vip){
             println("el vip es verdadero")
@@ -19,9 +58,7 @@ class Estructuras_de_control {
         }
 
 
-        when (2) {
 
-        }
         for (t in 1..10) {
 
         }
