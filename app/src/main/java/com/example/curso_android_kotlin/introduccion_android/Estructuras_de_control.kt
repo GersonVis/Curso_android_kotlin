@@ -68,5 +68,20 @@ class Estructuras_de_control {
         }while(++intentos<=3)// solo se ejecutara una vez
 
 
+
+    }
+    // for
+    fun recorrer_array(array: Array<String>){
+        for(valor in array){
+            println(valor)
+        }
+        println("")
+        for(pos in array.indices){
+            println(array.get(pos))
+        }
+        println("")
+        for(pos in 0..array.size-1){
+            println("${pos+1} ${array.get(pos)}")
+        }
     }
 }
