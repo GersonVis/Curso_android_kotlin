@@ -68,6 +68,22 @@ class Estructuras_de_control {
         }while(++intentos<=3)// solo se ejecutara una vez
 
 
+        //BUCLE WHILE
+
+        var empresas: List<String> = List(5, {"empresa$it"})
+        println(empresas)
+        var indice: Int = 0
+        var dinero: Int = 400
+        while(dinero > 0){
+            if(empresas.elementAtOrNull(indice++) != null){
+                dinero-=100
+                println("se realizo una inversión dinero restante: $dinero")
+            }else{
+                indice=0
+            }
+
+        }
+
 
     }
     // for
