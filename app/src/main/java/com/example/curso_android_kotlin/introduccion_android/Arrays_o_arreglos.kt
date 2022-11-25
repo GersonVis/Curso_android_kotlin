@@ -38,5 +38,11 @@ class Arrays_o_arreglos {
                 print("valor: $it ")
             }
         }
+
+
+        var inicioRango='a'.code
+        var finalRango='z'.code
+        var letras = Array<String>(finalRango+1-inicioRango, {i->(inicioRango+i).toChar().toString()})
+        println(letras.contentToString())
     }
 }
