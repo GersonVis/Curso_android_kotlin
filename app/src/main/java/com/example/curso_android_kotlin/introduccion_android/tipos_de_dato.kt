@@ -57,8 +57,8 @@ class tipos_de_dato {
         edad.toString()
         saludo.toInt()
 
-
-
+        var fechaEntrada = "01/13/1999"
+        var mesEntrada = fechaEntrada.subSequence(0,2)
 
     }
 }
