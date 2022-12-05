@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var persona1: Person = Person("gerson", "34343MSG3323");
-        println(persona1.playera)
+
 
 
         var pele: Atleta = Atleta("Pele", "si")

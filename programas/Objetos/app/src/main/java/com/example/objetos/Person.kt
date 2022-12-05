@@ -6,8 +6,9 @@ import android.annotation.SuppressLint
 //constructor son la parte inicial de una clase, con los cuales
 //nosotros queremos que se inicialice el objeto
 open class Person(protected var name: String ="sin name", private var passport: String? = null, protected var residence: String="",
-                  override var saludo: String
+
 ):saludar() {
+    override var saludo: String= ""
     override fun hacerSaludo() {
         TODO("Not yet implemented")
     }
@@ -27,7 +28,7 @@ class Atleta(name: String ="sin name", passport: String? = null, residence: Stri
       internal fun setResidence(newResidence:String):Unit{
           this.residence=newResidence
       }
-    override fun hablar():Unit{
+    fun hablar():Unit{
         println("yo hablo con acento brazileño");
     }
 }
