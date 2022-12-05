@@ -9,10 +9,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var persona1: Person = Person("gerson", "34343MSG3323");
-        println(persona1.alive);
-        println(persona1.name);
-        println(persona1.passport);
-        persona1.die();
+        println(persona1.playera)
 
+
+        var pele: Atleta = Atleta("Pele", "si")
+
+        println(pele.getResidence());
+        pele.setResidence("iguala guerrero");
+        println(pele.getResidence())
+        pele.hablar()
     }
 }
+
