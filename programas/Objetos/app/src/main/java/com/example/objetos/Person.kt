@@ -7,11 +7,13 @@ import android.annotation.SuppressLint
 //nosotros queremos que se inicialice el objeto
 open class Person(protected var name: String ="sin name", private var passport: String? = null, protected var residence: String="",
 
-):saludar() {
+):saludar(), Movimiento {
     override var saludo: String= ""
     override fun hacerSaludo() {
         TODO("Not yet implemented")
     }
+
+    override var velocidad: Int = 20
 }
 //las clases traen por defecto habilitado final
 // que quiere decir que son la última parte de bloque

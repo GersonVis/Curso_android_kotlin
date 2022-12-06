@@ -1,22 +1,22 @@
 package com.example.objetos
 
-class Car(var nombre: String): Movimiento(), Sonido {
+class Car(var nombre: String): Movimiento, Sonido {
     var id: String = "0000000"
     init {
         id="cambiado"
     }
-    constructor(id: String, nombre: String):this(nombre){
-
+    constructor(nombre: String, id: String,):this(nombre){
+       this.id=id
     }
-    override var velocidad: Int
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    override var velocidad: Int = 300
+       get() {return field}
+       set(value) {field=value}
     override var claxon: String
         get() = TODO("Not yet implemented")
         set(value) {}
 
 }
-abstract  class Movimiento(){
+interface Movimiento{
     abstract var velocidad: Int;
 }
 interface Sonido{

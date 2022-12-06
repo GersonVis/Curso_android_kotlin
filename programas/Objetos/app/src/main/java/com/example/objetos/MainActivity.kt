@@ -8,16 +8,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var persona1: Person = Person("gerson", "34343MSG3323");
+        val subaclase:Subclases = Subclases()
+        subaclase.metodo()
 
-
-
-        var pele: Atleta = Atleta("Pele", "si")
-
-        println(pele.getResidence());
-        pele.setResidence("iguala guerrero");
-        println(pele.getResidence())
-        pele.hablar()
+        val dentroSubClase: Subclases.Dentro = Subclases().Dentro()
+        dentroSubClase.metodo()
     }
+
 }
 
