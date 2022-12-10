@@ -8,7 +8,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val subaclase:Subclases = Subclases()
+     /*   val subaclase:Subclases = Subclases()
         subaclase.metodo()
 
         val dentroSubClase: Subclases.Dentro = Subclases().Dentro()
@@ -36,7 +36,19 @@ class MainActivity : AppCompatActivity() {
 
         var rojo:Colores=Colores.ROJO
         println(rojo)
-        println(rojo.demasValores())
+        println(rojo.demasValores())*/
+       /* val ciclista1: Ciclista = Ciclista(
+            "gerson",
+            1.76f,
+            90.0f,
+            27,
+            TipoBicicleta.NORMAL)*/
+           val nadador1: Nadador = Nadador(
+               "gerson",
+               1.76f,
+               90f,
+               27,
+                NadoEstilo.LIBRE)
     }
 
 }
