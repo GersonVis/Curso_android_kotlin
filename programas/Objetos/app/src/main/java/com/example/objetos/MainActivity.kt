@@ -103,6 +103,8 @@ class MainActivity : AppCompatActivity() {
         var codigosPostales: mapIntStr = mutableMapOf<Int, String>(2 to "gerson")
         codigosPostales[40132] = "Pololcingo"
         codigosPostales.put(3434, "perro")
+
+        var variable
     }
 
 }
