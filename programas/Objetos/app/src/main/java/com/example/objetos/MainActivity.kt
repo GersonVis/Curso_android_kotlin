@@ -43,6 +43,11 @@ class MainActivity : AppCompatActivity() {
     fun ordenSuperior(nombres: Array<String>, lambda:(nombres: Array<String>)->Unit):Unit{
             lambda(nombres)
     }
+    fun recorrerNumeros(lambda:(numero: Int)->Int){
+        for(t in 0..10){
+            lambda(t)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -67,6 +72,14 @@ class MainActivity : AppCompatActivity() {
         var retornado = lambdaRetorno(0)
 
         println(retornado)
+
+        var numeros = IntArray(5){it}
+
+        recorrerNumeros(){
+            it
+        }
+        recorrerNumeros { x: Int -> x }
+
     }
 
 }
