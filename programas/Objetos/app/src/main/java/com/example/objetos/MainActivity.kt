@@ -48,6 +48,11 @@ class MainActivity : AppCompatActivity() {
             lambda(t)
         }
     }
+    fun ordenSuperiorLambdaExterna(lambdaExterna: (dato: Int)->Unit){
+        for(t in 0..10){
+            lambdaExterna(t)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -80,6 +85,12 @@ class MainActivity : AppCompatActivity() {
         }
         recorrerNumeros { x: Int -> x }
 
+        var variableExterna: Int = 0
+
+        ordenSuperiorLambdaExterna{
+            variableExterna+=it
+        }
+        println("valor de la suma $variableExterna")
     }
 
 }
