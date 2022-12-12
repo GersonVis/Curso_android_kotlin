@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 
-private val Any.nombre: String?
+val Any.nombre: String?
     get() {return this.toString()}
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
             }
 
     }
+    fun ordenSuperior(nombres: Array<String>, lambda:(nombres: Array<String>)->Unit):Unit{
+            lambda(nombres)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,12 +50,23 @@ class MainActivity : AppCompatActivity() {
        // println("El resultado de la resta es ${calculadora(10,5,::sumar)}")
 
         // objeto con funciones
-        val objetoConFunciones: ObjetoConFunciones = ObjetoConFunciones(
-          "probando funciones de orden superior"
-        )
-        objetoConFunciones.ordenSuperior(object {
-            var nombre ="juan"
-        }, ::mostrarObjectoPasado)
+        ordenSuperior(arrayOf("gerson", "visoso", "ocampo")) { datos: Array<String> ->
+            for (nombre in datos) {
+                println(nombre)
+            }
+        }
+        var mostrarNombres={ datos: Array<String> ->
+            for (nombre in datos){
+                println(nombre)
+            }
+        }
+        var nombres = Array<String>(4){"nuevo nombre $it"};
+        ordenSuperior(nombres, mostrarNombres)
+
+        var lambdaRetorno ={x:Int ->"estoy retornando un valor $x"}
+        var retornado = lambdaRetorno(0)
+
+        println(retornado)
     }
 
 }
