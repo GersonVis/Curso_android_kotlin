@@ -7,6 +7,9 @@ import android.os.Bundle
 val Any.nombre: String?
     get() {return this.toString()}
 
+typealias rc = Person
+typealias aliassumar = (a: Int)-> Unit
+typealias mapIntStr = MutableMap<Int, String>
 class MainActivity : AppCompatActivity() {
 
     //agregar un nuevo metodo a la clase String
@@ -91,7 +94,18 @@ class MainActivity : AppCompatActivity() {
             variableExterna+=it
         }
         println("valor de la suma $variableExterna")
+
+        var referencia: aliassumar = {
+            println("println $it")
+        }
+        referencia(5)
+
+        var codigosPostales: mapIntStr = mutableMapOf<Int, String>(2 to "gerson")
+        codigosPostales[40132] = "Pololcingo"
+        codigosPostales.put(3434, "perro")
     }
 
 }
+
+
 
