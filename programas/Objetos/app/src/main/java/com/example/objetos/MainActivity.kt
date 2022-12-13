@@ -63,24 +63,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       // println("El resultado de la resta es ${calculadora(10,5,::sumar)}")
-        var variableCompuesta = "variable1" to 1234
-        val (variable1, variable2) = variableCompuesta
-        println("variable1: $variable1 variable2: $variable2")
+       // desestructuración de un array para poder obtener el ID y su contenido
+        var nombresIds: MutableMap<String, String> = mutableMapOf(
+            "gerson" to "1232",
+            "visoso" to "2311",
+            "ocampo" to "3215")
+        for((key, nombre) in nombresIds){
+            println("$key.- $nombre")
+        }
 
-        var variableConMetodos = "metodo1" to "metodo2"
-        var variableAlmacen1: String = variableConMetodos.component1()
-        var variableAlmacen2: String = variableConMetodos.component2()
-
-        println("variable accedida por metodo 1: $variableAlmacen1 variable " +
-                "accededida por método 2: $variableAlmacen2")
-        val(v1,v2)=retornarDesestructuraion()
-        println("$v1, $v2")
-        var (v5, v6, v7) = Star("sol", 433f, "via lactea")
-        println("$v5 $v6 $v7")
+        var frutas: Array<String> = arrayOf("Manzana", "Pera", "Sandia")
+        for((pos, valor) in frutas.withIndex()){
+            println("$pos.- $valor")
+        }
     }
 
 }
+
 
 
 
