@@ -43,6 +43,16 @@ class MainActivity : AppCompatActivity() {
             }
 
     }
+    fun value_try(v1: Int, v2: Int):Any{
+        return try{
+            v1/v2
+        }catch (e: Exception){
+            "no se puede realizar la operacion"
+        }finally {
+            println("me ejecute soy un finally")
+            "retorno finally"
+        }
+    }
     fun ordenSuperior(nombres: Array<String>, lambda:(nombres: Array<String>)->Unit):Unit{
             lambda(nombres)
     }
@@ -63,19 +73,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       // desestructuración de un array para poder obtener el ID y su contenido
-        var nombresIds: MutableMap<String, String> = mutableMapOf(
-            "gerson" to "1232",
-            "visoso" to "2311",
-            "ocampo" to "3215")
-        for((key, nombre) in nombresIds){
-            println("$key.- $nombre")
-        }
+      // usos de excepsiones
+        var nula: String ?= ""
+        nula=null
+        var nombre: String = if (nula == null) "verdadero" else "falso"
+        println("el nombre es $nombre")
 
-        var frutas: Array<String> = arrayOf("Manzana", "Pera", "Sandia")
-        for((pos, valor) in frutas.withIndex()){
-            println("$pos.- $valor")
+        try {
+            println("division por cero 0/10 ${5/0}")
+        }catch (error: java.lang.ArithmeticException){
+            println("Estas dividiendo entre 0")
+        }finally {
+            println("este mensaje siempre se ejecuta")
         }
+        var resultado=value_try(0,20)
+        println(" el resultadod de dividir 0/20 $resultado")
+        println("el resultadod de dividir 20/00 ${value_try(20,0)}")
     }
 
 }
