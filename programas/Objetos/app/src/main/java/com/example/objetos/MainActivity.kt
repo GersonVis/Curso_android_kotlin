@@ -2,6 +2,7 @@ package com.example.objetos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlin.random.Random
 
 
 val Any.nombre: String?
@@ -73,32 +74,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-      // usos de excepsiones
-        var nula: String ?= ""
-        nula=null
-        var nombre: String = if (nula == null) "verdadero" else "falso"
-        println("el nombre es $nombre")
-
-        try {
-            println("division por cero 0/10 ${5/0}")
-        }catch (error: java.lang.ArithmeticException){
-            println("Estas dividiendo entre 0")
-        }finally {
-            println("este mensaje siempre se ejecuta")
+        var nombre:String = "Gerson Visoso Ocampo".run {
+            var sinEspacios:String =this.replace(" ", "")
+            sinEspacios.uppercase()
         }
-        var resultado=value_try(0,20)
-        println(" el resultadod de dividir 0/20 $resultado")
-        println("el resultadod de dividir 20/00 ${value_try(20,0)}")
+        println("El nombre reparado es: $nombre")
 
-        var password: String = "1234"
-        if(password.length<8){
-            throw ErrorMio("La contraseña no cumple con la longitud requerida")
-        }else{
-            println("El largo de la contraseña es correcto")
+        var agregarIDS = with(Array<Int>(5){it}){
+            var idsCantidad: MutableMap<Int, Int> = mutableMapOf<Int, Int>()
+            var aleatorios:IntRange = 1..1000
+            for (numero in this){
+                idsCantidad.put(numero, aleatorios.random())
+            }
+            idsCantidad
         }
+        println(agregarIDS.toString())
+
+        var nombreElvis: String?=null
+        nombreElvis?.uppercase() ?: "es nulo";
     }
 
-    class ErrorMio(msg: String): Exception(msg){
+    class Persona(msg: String): Exception(msg){
 
     }
 
