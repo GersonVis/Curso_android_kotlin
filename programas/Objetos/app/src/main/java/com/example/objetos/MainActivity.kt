@@ -56,55 +56,28 @@ class MainActivity : AppCompatActivity() {
             lambdaExterna(t)
         }
     }
+    fun retornarDesestructuraion(): Pair<String, String> {
+        return "desestrurado1" to "desestructurado2"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
        // println("El resultado de la resta es ${calculadora(10,5,::sumar)}")
+        var variableCompuesta = "variable1" to 1234
+        val (variable1, variable2) = variableCompuesta
+        println("variable1: $variable1 variable2: $variable2")
 
-        // objeto con funciones
-        ordenSuperior(arrayOf("gerson", "visoso", "ocampo")) { datos: Array<String> ->
-            for (nombre in datos) {
-                println(nombre)
-            }
-        }
-        var mostrarNombres={ datos: Array<String> ->
-            for (nombre in datos){
-                println(nombre)
-            }
-        }
-        var nombres = Array<String>(4){"nuevo nombre $it"};
-        ordenSuperior(nombres, mostrarNombres)
+        var variableConMetodos = "metodo1" to "metodo2"
+        var variableAlmacen1: String = variableConMetodos.component1()
+        var variableAlmacen2: String = variableConMetodos.component2()
 
-        var lambdaRetorno ={x:Int ->"estoy retornando un valor $x"}
-        var retornado = lambdaRetorno(0)
-
-        println(retornado)
-
-        var numeros = IntArray(5){it}
-
-        recorrerNumeros(){
-            it
-        }
-        recorrerNumeros { x: Int -> x }
-
-        var variableExterna: Int = 0
-
-        ordenSuperiorLambdaExterna{
-            variableExterna+=it
-        }
-        println("valor de la suma $variableExterna")
-
-        var referencia: aliassumar = {
-            println("println $it")
-        }
-        referencia(5)
-
-        var codigosPostales: mapIntStr = mutableMapOf<Int, String>(2 to "gerson")
-        codigosPostales[40132] = "Pololcingo"
-        codigosPostales.put(3434, "perro")
-
-        var variable
+        println("variable accedida por metodo 1: $variableAlmacen1 variable " +
+                "accededida por método 2: $variableAlmacen2")
+        val(v1,v2)=retornarDesestructuraion()
+        println("$v1, $v2")
+        var (v5, v6, v7) = Star("sol", 433f, "via lactea")
+        println("$v5 $v6 $v7")
     }
 
 }
