@@ -89,6 +89,17 @@ class MainActivity : AppCompatActivity() {
         var resultado=value_try(0,20)
         println(" el resultadod de dividir 0/20 $resultado")
         println("el resultadod de dividir 20/00 ${value_try(20,0)}")
+
+        var password: String = "1234"
+        if(password.length<8){
+            throw ErrorMio("La contraseña no cumple con la longitud requerida")
+        }else{
+            println("El largo de la contraseña es correcto")
+        }
+    }
+
+    class ErrorMio(msg: String): Exception(msg){
+
     }
 
 }
