@@ -12,6 +12,7 @@ typealias rc = Person
 typealias aliassumar = (a: Int)-> Unit
 typealias mapIntStr = MutableMap<Int, String>
 class MainActivity : AppCompatActivity() {
+    lateinit var perro:String
 
     //agregar un nuevo metodo a la clase String
     private fun String.nospace():String{
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     fun mostrarObjectoPasado(parametros: Any){
             println("estamos pasando informacion")
             try {
-                
+
                 println(parametros.nombre)
             }catch (e: java.lang.Error){
 
@@ -92,12 +93,34 @@ class MainActivity : AppCompatActivity() {
 
         var nombreElvis: String?=null
         nombreElvis?.uppercase() ?: "es nulo";
+        var carro: String?
+
+        val leon: String by lazy{"Juan"}
+
     }
 
     class Persona(msg: String): Exception(msg){
 
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
 
 
