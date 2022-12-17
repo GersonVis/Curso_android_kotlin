@@ -4,8 +4,10 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import kotlin.random.Random
 
 
@@ -95,6 +97,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        var etEjemplo = findViewById<EditText>(R.id.etEjemplo)
+
+        etEjemplo.addTextChangedListener{
+            if(etEjemplo.text.length==0) etEjemplo.setError("No puede ser vacio")
+        }
+        etEjemplo.setSelection(0,4)
+        var inicio = etEjemplo.selectionStart
+        var fin= etEjemplo.selectionEnd
+      //  etEjemplo.selectAll()
 
     }
 
