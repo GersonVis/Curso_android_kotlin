@@ -1,8 +1,11 @@
 package com.example.objetos
 
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import kotlin.random.Random
 
 
@@ -72,11 +75,26 @@ class MainActivity : AppCompatActivity() {
     fun retornarDesestructuraion(): Pair<String, String> {
         return "desestrurado1" to "desestructurado2"
     }
+    var padre=this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         var tvEjemplo = findViewById<TextView>(R.id.tvEjemplo)
+        tvEjemplo.apply {
+            text = "texto cambiado desde codigo"
+            setTextColor(Color.parseColor("#FFFF0000"))
+            setTextColor(Color.RED)
+            setTextColor(-65536)
+            setTypeface(Typeface.MONOSPACE, Typeface.BOLD)
+            setTextSize(32f)
+            setOnClickListener{
+                Toast.makeText(padre, "hola", Toast.LENGTH_LONG).show()
+                with(tvEjemplo) {
+                    this.setTextColor(Color.GREEN)
+                }
+            }
+        }
 
     }
 
