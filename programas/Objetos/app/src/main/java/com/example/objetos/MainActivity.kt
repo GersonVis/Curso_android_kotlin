@@ -2,6 +2,7 @@ package com.example.objetos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import kotlin.random.Random
 
 
@@ -75,27 +76,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var nombre:String = "Gerson Visoso Ocampo".run {
-            var sinEspacios:String =this.replace(" ", "")
-            sinEspacios.uppercase()
-        }
-        println("El nombre reparado es: $nombre")
-
-        var agregarIDS = with(Array<Int>(5){it}){
-            var idsCantidad: MutableMap<Int, Int> = mutableMapOf<Int, Int>()
-            var aleatorios:IntRange = 1..1000
-            for (numero in this){
-                idsCantidad.put(numero, aleatorios.random())
-            }
-            idsCantidad
-        }
-        println(agregarIDS.toString())
-
-        var nombreElvis: String?=null
-        nombreElvis?.uppercase() ?: "es nulo";
-        var carro: String?
-
-        val leon: String by lazy{"Juan"}
+        var tvEjemplo = findViewById<TextView>(R.id.tvEjemplo)
 
     }
 
