@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Objetos</string>
     <string name="etEjemplo">Introduce un texto</string>
+    <string name="act_ejemplo_hint">Introduce texto</string>
+    <string name="hint_mactv_menu">Ej. Caldo de mojarra</string>
+    <string name="tv_buscar_menu_text">Menú busqueda:</string>
+    <string-array name="countries_array">
+        <item>ayer</item>
+        <item>amanecer</item>
+        <item>anoche</item>
+        <item>aaveces</item>
+        <item>honduras</item>
+    </string-array>
+    <!--Nombre de produdctos utilizados -->
+    <string-array name="products">
+        <item>Aceite de oliva</item>
+        <item>Aceitunas</item>
+        <item>Aguacate</item>
+        <item>Ajo</item>
+        <item>Alcachofa</item>
+        <item>Amaranto</item>
+        <item>Apio</item>
+        <item>Arroz</item>
+        <item>Avena</item>
+    </string-array>
 </resources>

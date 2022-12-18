@@ -4,7 +4,10 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
+import android.widget.MultiAutoCompleteTextView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -17,6 +20,7 @@ val Any.nombre: String?
 typealias rc = Person
 typealias aliassumar = (a: Int)-> Unit
 typealias mapIntStr = MutableMap<Int, String>
+
 class MainActivity : AppCompatActivity() {
     lateinit var perro:String
 
@@ -106,7 +110,20 @@ class MainActivity : AppCompatActivity() {
         etEjemplo.setSelection(0,4)
         var inicio = etEjemplo.selectionStart
         var fin= etEjemplo.selectionEnd
-      //  etEjemplo.selectAll()
+
+        // auto completado, mostrar opciones para texto introducido en un autocompletetextview
+        var actvEjemplo= findViewById<AutoCompleteTextView>(R.id.actvEjemplo)
+
+        var actvEjemploSugerencias = resources.getStringArray(R.array.products)
+        //crear un adaptador
+        var adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, actvEjemploSugerencias)
+
+        //enlazar con el adaptador en la activity
+        actvEjemplo.setAdapter(adapter)
+        //enlazar el elemento con el código
+        var actvmMenu = findViewById<MultiAutoCompleteTextView>(R.id.mactvMenu)
+        actvmMenu.setAdapter(adapter)
+        actvmMenu.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
 
     }
 
