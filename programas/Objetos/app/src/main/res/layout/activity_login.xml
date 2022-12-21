@@ -109,5 +109,40 @@
             />
 
     </RadioGroup>
+    <CheckBox
+        android:id="@+id/cboxTelefono"
+        app:layout_constraintTop_toBottomOf="@id/rgConfirmacion"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="telefono"
+        android:onClick="onCheckBoxListener"
+        android:enabled="false"
+        />
+    <CheckBox
+        android:id="@+id/cboxMsg"
+        app:layout_constraintTop_toBottomOf="@id/rgConfirmacion"
+        app:layout_constraintStart_toEndOf="@id/cboxTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensaje"
+        android:button="@drawable/ch_estilo_booleano"
+        android:onClick="onCheckBoxListener"
+        />
 
+    <ToggleButton
+        android:id="@+id/tgOpcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="Activar opcion"
+        android:textOff="Desactivddo boton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cboxTelefono" />
+    <ToggleButton
+        android:id="@+id/tgOpcionDos"
+        android:layout_width="72dp"
+        android:layout_height="38dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tgOpcion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

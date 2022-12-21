@@ -3,9 +3,7 @@ package com.example.objetos
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import com.google.android.material.chip.Chip
@@ -56,6 +54,35 @@ class Login : AppCompatActivity() {
 
         //seleccionamos el radio button con codigo
         rgConfirmacion.check(rbLlamada.id)
+
+        //referencia a checbox
+        var chMsg: CheckBox = findViewById<CheckBox>(R.id.cboxTelefono)
+
+        //marcar seleccionado
+        chMsg.isChecked =true
+
+        chMsg.isEnabled =false
+
+        var tgOpcion: ToggleButton = findViewById<ToggleButton>(R.id.tgOpcion)
+
+        //evento de seleccion
+        tgOpcion.setOnCheckedChangeListener{ vista, checked->
+            if(checked){
+                Toast.makeText(this, "ha sido seleccionado", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    fun onCheckBoxListener(view: View){
+        if(view is CheckBox){
+            var checked = view.isChecked
+            if(checked){
+                when(view.id){
+                    R.id.cboxMsg->Toast.makeText(this, "Has seleccionado mensaje", Toast.LENGTH_SHORT).show()
+                    R.id.cboxTelefono->Toast.makeText(this, "has selccionado llamada", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
     }
     fun onClickRadioButtonLlamada(view: View){
        if(view is RadioButton){
