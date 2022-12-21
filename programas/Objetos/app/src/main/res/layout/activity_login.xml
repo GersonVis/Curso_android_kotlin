@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:layout_marginStart="8dp"
+    >
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="match_parent"
@@ -39,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
     <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chEmpresas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="55dp"
@@ -58,6 +61,7 @@
         <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:chipIcon="@drawable/ic_baseline_email_24"
             android:text="facebook"
             style="@style/esChip"/>
         <com.google.android.material.chip.Chip
@@ -71,5 +75,39 @@
             android:text="outlook"
             style="@style/esChip"/>
     </com.google.android.material.chip.ChipGroup>
+    <RadioGroup
+        android:id="@+id/rgConfirmacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/chEmpresas"
+
+        android:checkedButton="@id/chEmpresas">
+        <RadioButton
+            android:id="@+id/rbSms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rb_car_bg"
+            android:button="@null"
+            android:onClick="onClickRadioButtonLlamada"
+            />
+        <RadioButton
+            android:id="@+id/rbLlamada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:background="@drawable/rb_telefono_bg"
+            android:onClick="onClickRadioButtonLlamada"
+            />
+        <RadioButton
+            android:id="@+id/rbDosPasos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:background="@drawable/rb_dos_pasos_bg"
+            android:onClick="onClickRadioButtonLlamada"
+            />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,9 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="esChip" parent="Widget.MaterialComponents.Chip.Entry">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@drawable/ch_text_style</item>
         <item name="chipBackgroundColor">@color/blue_light</item>
-        <item name="chipStrokeColor">@color/blue_dark</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="chipStrokeColor">#000000</item>
+        <item name="chipStrokeWidth">1dp</item>
     </style>
 </resources>
