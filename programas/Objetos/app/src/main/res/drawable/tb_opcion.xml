@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enterFadeDuration="@integer/material_motion_duration_short_1"
+    android:exitFadeDuration="@integer/material_motion_duration_short_1">
+    <item android:drawable="@drawable/tg_mountain" android:state_checked="true"/>
+    <item android:drawable="@drawable/tg_beach" android:state_checked="false"/>
+</selector>

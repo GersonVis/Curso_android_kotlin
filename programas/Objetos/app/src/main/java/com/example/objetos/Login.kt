@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Login : AppCompatActivity() {
     val padre=this
@@ -70,6 +71,19 @@ class Login : AppCompatActivity() {
             if(checked){
                 Toast.makeText(this, "ha sido seleccionado", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        var swSwitch: Switch = findViewById<Switch>(R.id.swSwitch)
+        swSwitch.setOnCheckedChangeListener{ view, checked->
+            if(checked){
+                Toast.makeText(this, "seleccionado", Toast.LENGTH_LONG).show()
+                return@setOnCheckedChangeListener
+            }
+            Toast.makeText(this, "desceleccionado", Toast.LENGTH_LONG).show()
+        }
+        var fabAccion = findViewById<FloatingActionButton>(R.id.fabAccion)
+        fabAccion.setOnClickListener{
+                Toast.makeText(this, "pulsando floatingActionButton", Toast.LENGTH_SHORT).show()
         }
     }
     fun onCheckBoxListener(view: View){

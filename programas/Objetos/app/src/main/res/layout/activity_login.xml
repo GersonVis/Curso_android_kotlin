@@ -138,11 +138,44 @@
         android:textOff="Desactivddo boton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cboxTelefono" />
+
     <ToggleButton
         android:id="@+id/tgOpcionDos"
         android:layout_width="72dp"
-        android:layout_height="38dp"
-
+        android:layout_height="32dp"
+        android:background="@drawable/tb_opcion"
+        android:checked="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tgOpcion" />
+        app:layout_constraintTop_toBottomOf="@+id/tgOpcion"
+        tools:ignore="TouchTargetSizeCheck"
+        android:textOn=""
+        android:textOff=""
+        />
+
+    <android.widget.Switch
+        android:id="@+id/swSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:minHeight="48dp"
+        android:showText="true"
+        android:text="Disponible"
+        android:textOff="No"
+        android:textOn="Si"
+        android:thumb="@drawable/sw_thumb"
+        android:track="@drawable/sw_track"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tgOpcionDos" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:contentDescription="Llamar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_call"
+        android:backgroundTint="@color/purple_200"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
