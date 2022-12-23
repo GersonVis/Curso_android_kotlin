@@ -9,11 +9,69 @@
 
   <ImageView
 
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      android:id="@+id/view"
-
+      android:layout_marginTop="10dp"
+      android:id="@+id/viImagen"
+      android:src="@drawable/joker"
       android:layout_width="400dp"
       android:layout_height="200dp"
       tools:layout_editor_absoluteX="5dp" />
+  <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/sivImagenCircular"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_marginTop="20dp"
+      app:layout_constraintTop_toBottomOf="@id/viImagen"
+      app:layout_constraintStart_toStartOf="parent"
+      android:src="@drawable/prometeus"
+      app:shapeAppearanceOverlay="@style/Circular"
+      />
+  <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/sivImagenCircularContorno"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_margin="20dp"
+      app:layout_constraintTop_toBottomOf="@id/viImagen"
+      app:layout_constraintStart_toEndOf="@id/sivImagenCircular"
+      app:strokeWidth="3dp"
+      app:strokeColor="@color/blue_light"
+      android:src="@drawable/joker"
+      app:shapeAppearanceOverlay="@style/CircularDetalle"
+      />
+  <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/sivImagenCircularCorte"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_margin="20dp"
+      app:layout_constraintTop_toBottomOf="@id/viImagen"
+      app:layout_constraintStart_toEndOf="@id/sivImagenCircularContorno"
+      app:strokeWidth="3dp"
+      app:strokeColor="@color/blue_light"
+      android:src="@drawable/prometeus"
+      app:shapeAppearanceOverlay="@style/Corte"
+      />
+  <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/sivImagenCircularUnirVarios"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_margin="20dp"
+      app:layout_constraintTop_toBottomOf="@id/sivImagenCircular"
+      app:layout_constraintStart_toStartOf="parent"
+      app:strokeWidth="3dp"
+      app:strokeColor="@color/blue_light"
+      android:src="@drawable/prometeus"
+      app:shapeAppearanceOverlay="@style/UnirCortes"
+      />
+
+  <WebView
+      android:id="@+id/wvNavegador"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:layout_editor_absoluteX="1dp"
+      tools:layout_editor_absoluteY="451dp"
+      app:layout_constraintTop_toBottomOf="@id/sivImagenCircularUnirVarios"
+      />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
