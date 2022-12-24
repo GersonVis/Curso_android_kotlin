@@ -1,12 +1,18 @@
 package com.example.objetos
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.CalendarView
 import android.widget.ImageView
+import android.widget.MediaController
+import android.widget.TextView
+import android.widget.VideoView
 import com.squareup.picasso.Picasso
+import java.util.*
 
 class Views : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,5 +33,38 @@ class Views : AppCompatActivity() {
         wvNavegador.setWebViewClient(WebViewClient())
         //cargamos una url
         wvNavegador.loadUrl("http://www.google.com")
+
+        //codigo de video
+        var videoView =findViewById<VideoView>(R.id.videoView)
+        //creamos el controlador del video
+        var controller =MediaController(this)
+
+        //unimos la vista al controlador
+      //  controller.setAnchorView(videoView)
+        //agregamos el controller a la view
+      //  videoView.setMediaController(controller)
+
+        //cargar video con URI
+        var videoLocal = "android.resource://"+packageName+"/"+R.raw.video
+        //println(packageName)
+        videoView.setVideoURI(Uri.parse(videoLocal))
+     //   videoView.start()
+        var tvCalendario =findViewById<TextView>(R.id.tvCalendario)
+        var cvCalendario =findViewById<CalendarView>(R.id.cvCalendario).run {
+            //evento de cambio de dia
+            setOnDateChangeListener { view, year, month, dayOfMonth ->
+                tvCalendario.setText("$dayOfMonth/${month+1}/$year")
+            }
+            this
+        }
+
+        //establecer una fecha en el calendario
+        var dayAfterTomorrow = Calendar.getInstance()
+        dayAfterTomorrow.set(2022, 11, 25)
+        cvCalendario.date = dayAfterTomorrow.timeInMillis
+
+        //hacer que el calendario en otro día en vez de domingo
+        var d =cvCalendario.firstDayOfWeek
+        cvCalendario.firstDayOfWeek =(d+1)%7
     }
 }
