@@ -1,17 +1,15 @@
 package com.example.objetos
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.CalendarView
-import android.widget.ImageView
-import android.widget.MediaController
-import android.widget.TextView
-import android.widget.VideoView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.lang.Thread.sleep
 import java.util.*
 
 class Views : AppCompatActivity() {
@@ -64,7 +62,22 @@ class Views : AppCompatActivity() {
         cvCalendario.date = dayAfterTomorrow.timeInMillis
 
         //hacer que el calendario en otro día en vez de domingo
-        var d =cvCalendario.firstDayOfWeek
-        cvCalendario.firstDayOfWeek =(d+1)%7
+        var d = cvCalendario.firstDayOfWeek
+        cvCalendario.firstDayOfWeek = (d + 1) % 7
+
+
+        var pbhCarga = findViewById<ProgressBar>(R.id.progressBarHorinzontalDos)
+        GlobalScope.launch {
+            progressManager(pbhCarga)
+        }
+    }
+
+
+    fun progressManager(pb: ProgressBar) {
+        while (pb.progress < pb.max) {
+            sleep(1000)
+            pb.incrementProgressBy(5)
+            pb.incrementSecondaryProgressBy(10)
+        }
     }
 }

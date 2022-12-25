@@ -134,5 +134,21 @@
       app:layout_constraintTop_toBottomOf="@id/progressBarDos"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      android:indeterminate="true"/>
+      android:progressBackgroundTint="#FF0000"
+      android:progressTint="@color/purple_700"
+
+      android:progress="50"
+      android:max="360"/>  <ProgressBar
+      android:id="@+id/progressBarHorinzontalDos"
+      style="?android:attr/progressBarStyleHorizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toBottomOf="@id/progressBarHorinzontal"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:progressBackgroundTint="#FF0000"
+      android:progressTint="@color/purple_700"
+      android:secondaryProgress="130"
+      android:progress="50"
+      android:max="360"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
