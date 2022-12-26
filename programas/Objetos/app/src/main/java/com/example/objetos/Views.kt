@@ -1,5 +1,6 @@
 package com.example.objetos
 
+import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.WebView
@@ -13,6 +14,7 @@ import java.lang.Thread.sleep
 import java.util.*
 
 class Views : AppCompatActivity() {
+    private var contextView: Context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_views)
@@ -67,8 +69,76 @@ class Views : AppCompatActivity() {
 
 
         var pbhCarga = findViewById<ProgressBar>(R.id.progressBarHorinzontalDos)
+
+
+        var sbSeekBar = findViewById<SeekBar>(R.id.seekBar2)
+        sbSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    Toast.makeText(contextView, "Barra movida por el usuario", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                Toast.makeText(
+                    contextView,
+                    "Se pulso el puntero por el usuario",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                Toast.makeText(
+                    contextView,
+                    "Se detuvo la interaccion del puntero por el usuario",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+
+        sbSeekBar.max = 300
         GlobalScope.launch {
-            progressManager(pbhCarga)
+            //  progressManager(pbhCarga)
+            seekManager(sbSeekBar)
+        }
+        var tvRating = findViewById<TextView>(R.id.tvRating)
+        var ratingBar = findViewById<RatingBar>(R.id.ratingBar)
+        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+            tvRating.text = "${ratingBar.rating}/${ratingBar.numStars}"
+        }
+
+
+        var textoBusqueda = "Gerson,Visoso,Ocampo,Antonio,Castro,Linda,Catalan,David,Mauricio"
+        var nombres: Array<String> = textoBusqueda.split(",").toTypedArray()
+
+        var adapterNombres: ArrayAdapter<String> =
+            ArrayAdapter(contextView, android.R.layout.simple_list_item_1, nombres)
+
+        var lvBusqueda = findViewById<ListView>(R.id.lvBusqueda).run {
+            adapter = adapterNombres
+            this
+        }
+        var svBusqueda = findViewById<SearchView>(R.id.svBusqueda)
+
+        svBusqueda.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                svBusqueda.clearFocus()
+                if(nombres.contains(query))adapterNombres.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapterNombres.filter.filter(newText)
+                return false
+            }
+        })
+    }
+
+    fun seekManager(seek: SeekBar) {
+        while (true) {
+            sleep(500)
+            seek.incrementProgressBy(1)
         }
     }
 
