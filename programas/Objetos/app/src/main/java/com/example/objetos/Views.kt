@@ -7,6 +7,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.objetos.databinding.ActivityViewsBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -15,9 +16,14 @@ import java.util.*
 
 class Views : AppCompatActivity() {
     private var contextView: Context = this
+    private lateinit var binding: ActivityViewsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_views)
+        binding = ActivityViewsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+
         //referenciamos contenedor de imagen
         var viImagen = findViewById<ImageView>(R.id.viImagen)
 
@@ -49,11 +55,11 @@ class Views : AppCompatActivity() {
         //println(packageName)
         videoView.setVideoURI(Uri.parse(videoLocal))
      //   videoView.start()
-        var tvCalendario =findViewById<TextView>(R.id.tvCalendario)
+        var tvCalendario = binding.tvCalendario
         var cvCalendario =findViewById<CalendarView>(R.id.cvCalendario).run {
             //evento de cambio de dia
             setOnDateChangeListener { view, year, month, dayOfMonth ->
-                tvCalendario.setText("$dayOfMonth/${month+1}/$year")
+                binding.tvCalendario.setText("$dayOfMonth/${month+1}/$year")
             }
             this
         }
@@ -133,6 +139,19 @@ class Views : AppCompatActivity() {
                 return false
             }
         })
+        var numberPicker =findViewById<NumberPicker>(R.id.numberPicker)
+        numberPicker.minValue =0
+        numberPicker.maxValue =60
+        numberPicker.value =0
+
+        numberPicker.setFormatter { i-> String.format("%02d", i) }
+        var tvNumberPicker =findViewById<TextView>(R.id.tvNumberPicker)
+        numberPicker.setOnValueChangedListener { picker, oldVal, newVal ->
+            tvNumberPicker.text =String.format("Valor anterior: $oldVal Valor nuevo: $newVal")
+        }
+
+
+
     }
 
     fun seekManager(seek: SeekBar) {
