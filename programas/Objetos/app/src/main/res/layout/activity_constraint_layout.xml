@@ -6,4 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".ActivityConstraintLayout">
 
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <View
+        android:id="@+id/azul"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#3095D8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <View
+        android:id="@+id/amarillo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#F0F800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.406" />
+
+    <View
+        android:id="@+id/rojo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <View
+        android:id="@+id/verde"
+        android:layout_width="99dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="20dp"
+        android:background="#35F800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.408"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.232" />
+
+    <View
+        android:id="@+id/morado"
+        android:layout_width="102dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="124dp"
+        android:background="#7700FF"
+        app:layout_constraintStart_toStartOf="@id/barrier3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/morado2"
+        android:layout_width="102dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="372dp"
+        android:background="#7700FF"
+        app:layout_constraintStart_toStartOf="@id/barrier3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="morado,verde"
+        app:layout_editor_absoluteX="500dp"
+        app:layout_editor_absoluteY="300dp"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
