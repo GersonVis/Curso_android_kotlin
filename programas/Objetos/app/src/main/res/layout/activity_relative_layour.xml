@@ -6,42 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ActivityRelativeLayour">
     <View
-        android:id="@+id/Rojo"
+        android:id="@+id/v0"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#FF0000"
-        android:layout_centerInParent="true"
-       />
-    <View
-        android:id="@+id/Azul"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="#00B7FF"
-        android:layout_centerVertical="true"
-       />
-    <View
-        android:id="@+id/Verde"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="#45FF00"
-        android:layout_toLeftOf="@id/Rojo"
-        android:layout_alignParentBottom="true"
-       />
-    <View
-        android:id="@+id/Amarillo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="#EEFF00"
-        android:layout_above="@id/Rojo"
-        android:layout_centerInParent="true"
+        android:background="#F1DA0A"
+        android:layout_marginBottom="8dp"
+        android:translationZ="10sp"
+        android:translationX="200dp"
+        android:translationY="200dp"
+        android:scaleY="3"
+
         />
     <View
-        android:id="@+id/Morado"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="#B300FF"
-        android:layout_below="@id/Rojo"
-        android:layout_centerInParent="true"
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#31669E"
+        android:layout_marginBottom="8dp"
         />
+    <View
+        android:id="@+id/v2"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/v1"
+        android:background="#C9EBF1"
+        android:layout_marginEnd="10dp"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/v1"
+        android:background="#C9EBF1"
+        android:layout_toEndOf="@id/v2"
+        />
+    
 
 </RelativeLayout>
