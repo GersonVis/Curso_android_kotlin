@@ -12,19 +12,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.02" />
+
+    <View
+        android:id="@+id/rojo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#FF0000"
+        app:layout_constraintBottom_toTopOf="@+id/amarillo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/azul"
+        app:layout_constraintVertical_bias="0.608"
+       />
 
     <View
         android:id="@+id/azul"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#3095D8"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rojo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintStart_toEndOf="@+id/morado"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.044" />
 
     <View
         android:id="@+id/amarillo"
@@ -33,22 +47,10 @@
         android:background="#F0F800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.406" />
-
-    <View
-        android:id="@+id/rojo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="#FF0000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintTop_toBottomOf="@+id/rojo"
+        app:layout_constraintVertical_bias="0.794" />
 
     <View
         android:id="@+id/verde"
@@ -58,17 +60,17 @@
         android:background="#35F800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.408"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <View
         android:id="@+id/morado"
         android:layout_width="102dp"
         android:layout_height="102dp"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="16dp"
         android:background="#7700FF"
         app:layout_constraintStart_toStartOf="@id/barrier3"
         app:layout_constraintTop_toTopOf="parent" />
@@ -77,8 +79,8 @@
         android:id="@+id/morado2"
         android:layout_width="102dp"
         android:layout_height="102dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="208dp"
         android:background="#7700FF"
         app:layout_constraintStart_toStartOf="@id/barrier3"
         app:layout_constraintTop_toTopOf="parent" />
@@ -90,8 +92,7 @@
         app:barrierDirection="left"
         app:constraint_referenced_ids="morado,verde"
         app:layout_editor_absoluteX="500dp"
-        app:layout_editor_absoluteY="300dp"
-        />
+        app:layout_editor_absoluteY="300dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
