@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">caballo</string>
+    <string name="title">Horse Challenge</string>
+    <string name="level">Level</string>
+    <string name="moves">Level</string>
+    <string name="time">Moves</string>
+    <string name="lives">Lives</string>
+    <string name="options">Options</string>
+    <string name="instructions">Move the horse over board to complete all cells</string>
+    <string name="credits">Game created by Gerson Visoso Ocampo</string>
+
+    <string name="premiun">Ta here for remove ads, get more levels and unlimited lives</string>
+    <string name="premiunTitle">Ger premiun Access forever</string>
+    <string name="premiun_benefit1">No more Ads</string>
+    <string name="premiun_benefit2">Unlimited lives</string>
+    <string name="premiun_benefit3">Keep your reached level</string>
+    <string name="pay">ONLY PAY 1$ NOW</string>
+
+</resources>

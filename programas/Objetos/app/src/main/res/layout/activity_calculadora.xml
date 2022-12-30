@@ -20,6 +20,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:gravity="left|center"
+        style="@style/BotonNumero"
 
         />
 
@@ -33,6 +34,11 @@
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_margin="1dp"
+        android:text="C"
+        android:textColor="@color/white"
+        android:background="#FF5722"
+        style="@style/BotonNumero"
+
         />
 
     <TextView
@@ -122,6 +128,7 @@
         android:layout_columnWeight="1"
         android:layout_margin="1dp"
         android:text="9"
+        android:tag="borrar"
         style="@style/BotonNumero"/>
 
     <TextView
@@ -134,9 +141,62 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="2"
         android:layout_margin="1dp"
-        android:text="9"
+        android:text="*"
+        style="@style/BotonOperacion"
         />
 
+    <TextView
+        style="@style/BotonNumero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_row="4"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:text="1"
+        />
+    <TextView
+        style="@style/BotonNumero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_row="4"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:text="2"
+        />
+    <TextView
+        style="@style/BotonNumero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_row="4"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_column="2"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:text="3"
+        />
+    <TextView
+        style="@style/BotonNumero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_row="5"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:text="0"
+        />
     <TextView
         style="@style/BotonNumero"
         android:layout_width="0dp"
@@ -189,57 +249,22 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_margin="1dp"
-        android:text="9"
+        android:text="-"
+        style="@style/BotonOperacion"
         />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_row="4"
-        android:layout_rowSpan="1"
-        android:layout_rowWeight="1"
-        android:layout_column="0"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="1dp"
-        />
-
-    <TextView
-        style="@style/BotonNumero"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_row="4"
-        android:layout_rowSpan="1"
-        android:layout_rowWeight="1"
-        android:layout_column="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="1dp"
-        android:text="0" />
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_row="4"
-        android:layout_rowSpan="1"
-        android:layout_rowWeight="1"
-        android:layout_column="2"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="1dp"
-        android:text="="
-        />
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_row="4"
-        android:layout_rowSpan="1"
+        android:layout_rowSpan="2"
         android:layout_rowWeight="1"
         android:layout_column="3"
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_margin="1dp"
+        android:text="+"
+        style="@style/BotonOperacion"
         />
 
     <TextView
@@ -252,6 +277,11 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_margin="1dp"
+        android:drawableStart="@drawable/borrar_uno"
+        android:layout_gravity="fill_horizontal"
+        android:paddingStart="25dp"
+        android:paddingEnd="100dp"
+        style="@style/BotonOperacion"
         />
 
     <TextView
@@ -264,6 +294,8 @@
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_margin="1dp"
+        android:text="/"
+        style="@style/BotonOperacion"
         />
 
 </GridLayout>
