@@ -483,7 +483,7 @@
                     <TableRow android:weightSum="8">
 
                         <ImageView
-                            android:id="@+id/c03"
+                            android:id="@+id/c05"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -495,7 +495,7 @@
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c13"
+                            android:id="@+id/c15"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -507,7 +507,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c23"
+                            android:id="@+id/c25"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -519,7 +519,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c33"
+                            android:id="@+id/c35"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -531,7 +531,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c43"
+                            android:id="@+id/c45"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -543,7 +543,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c53"
+                            android:id="@+id/c55"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -555,7 +555,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c63"
+                            android:id="@+id/c65"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -567,7 +567,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c73"
+                            android:id="@+id/c75"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -682,7 +682,7 @@
                     <TableRow android:weightSum="8">
 
                         <ImageView
-                            android:id="@+id/c01"
+                            android:id="@+id/c03"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -694,7 +694,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c11"
+                            android:id="@+id/c13"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -706,7 +706,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c21"
+                            android:id="@+id/c23"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -718,7 +718,7 @@
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c31"
+                            android:id="@+id/c33"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -730,7 +730,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c41"
+                            android:id="@+id/c43"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -742,7 +742,7 @@
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c51"
+                            android:id="@+id/c53"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -754,7 +754,7 @@
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c61"
+                            android:id="@+id/c63"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -766,7 +766,7 @@
                             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                         <ImageView
-                            android:id="@+id/c71"
+                            android:id="@+id/c73"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -881,7 +881,7 @@
                     <TableRow android:weightSum="8">
 
                         <ImageView
-                            android:id="@+id/c00"
+                            android:id="@+id/c01"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -892,7 +892,7 @@
                             android:tag="c00" />
 
                         <ImageView
-                            android:id="@+id/c10"
+                            android:id="@+id/c11"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -903,7 +903,7 @@
                             android:tag="c10" />
 
                         <ImageView
-                            android:id="@+id/c20"
+                            android:id="@+id/c21"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -914,7 +914,7 @@
                             android:tag="c20" />
 
                         <ImageView
-                            android:id="@+id/c30"
+                            android:id="@+id/c31"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -925,7 +925,7 @@
                             android:tag="c30" />
 
                         <ImageView
-                            android:id="@+id/c40"
+                            android:id="@+id/c41"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -936,7 +936,7 @@
                             android:tag="c40" />
 
                         <ImageView
-                            android:id="@+id/c50"
+                            android:id="@+id/c51"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -947,7 +947,7 @@
                             android:tag="c50" />
 
                         <ImageView
-                            android:id="@+id/c60"
+                            android:id="@+id/c61"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -958,7 +958,7 @@
                             android:tag="c60" />
 
                         <ImageView
-                            android:id="@+id/c70"
+                            android:id="@+id/c71"
                             android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_column="0"
@@ -967,6 +967,103 @@
                             android:onClick="checkOnClickListener"
 
                             android:tag="c70" />
+                    </TableRow>
+                    <TableRow android:weightSum="8">
+
+
+                        <ImageView
+                            android:id="@+id/c00"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c12"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c10"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c22"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c20"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c32"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c30"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c22"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c40"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c52"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c50"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c22"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c60"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+                            android:tag="c72"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c70"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+                            android:tag="c02"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                     </TableRow>
 
                 </TableLayout>
@@ -1000,30 +1097,20 @@
                         android:textColor="@color/cardview_dark_background"
                         android:fontFamily="@font/amaranth_regular"
                         />
-
                     <TextView
-                        android:id="@+id/tvAction"
+                        android:id="@+id/tvNexLevel"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_marginLeft="24dp"
-                        android:layout_marginTop="10dp"
                         android:layout_marginRight="24dp"
-                        android:background="@drawable/bg_background_top"
-                        android:fontFamily="@font/amaranth_regular"
-                        android:onClick="launchActivity"
+                        android:layout_marginTop="10dp"
                         android:text="Next level"
                         android:textAlignment="center"
+                        android:textSize="30sp"
                         android:textColor="@color/cardview_light_background"
-                        android:textSize="30sp" />
-
-                    <ImageButton
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="24dp"
-                        android:background="@drawable/bg_redondear_dark"
-                        android:src="@drawable/ic_share"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:fontFamily="@font/amaranth_regular"
+                        android:background="@drawable/bg_background_top"
+                        />
 
                 </LinearLayout>
 
