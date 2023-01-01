@@ -2,8 +2,8 @@
     <string name="app_name">caballo</string>
     <string name="title">Horse Challenge</string>
     <string name="level">Level</string>
-    <string name="moves">Level</string>
-    <string name="time">Moves</string>
+    <string name="moves">Moves</string>
+    <string name="time">Time</string>
     <string name="lives">Lives</string>
     <string name="options">Options</string>
     <string name="instructions">Move the horse over board to complete all cells</string>

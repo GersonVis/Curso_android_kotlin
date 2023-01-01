@@ -81,16 +81,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="4"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginEnd="18dp"
                 android:layout_marginStart="18dp"
                 >
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tvMoverTitle"
                         android:layout_width="match_parent"
@@ -99,24 +102,957 @@
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:text="@string/moves"
+                        android:background="@drawable/bg_data_top"
                         android:textAlignment="center"
                         android:textColor="@color/cardview_light_background"
-                        android:background="@drawable/bg_background_top"
-                        android:textSize="18sp"/>
+                        android:fontFamily="@font/amaranth_regular"
+                        android:textSize="18sp" />
+
                     <TextView
                         android:id="@+id/tbMovesData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        android:text="@string/moves"
+                        android:background="@drawable/bg_data_bottom"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:text="1"
                         android:textAlignment="center"
                         android:textColor="@color/cardview_light_background"
-                        android:background="@drawable/bg_title_bottom"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/tvTimeTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_data_top"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/time"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tvTimeData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data_bottom"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="00:00"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/tvLiveTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_top_contrast"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/lives"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tvLiveData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_bottom_contrast"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvOptionTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_data_top"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:text="@string/options"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:id="@+id/vNewBonus"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:background="@color/contrast_data"
+                        android:translationY="-8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:translationY="-8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_data_bottom"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tvOptionData"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/amaranth_regular"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="1"
+                                android:textAlignment="center"
+
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tvBonusData"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/amaranth_regular"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:id="@+id/tlBoard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <!-- crear las casillas -->
+                    <!--Las medidas de las height de los image view serán con código-->
+                    <TableRow android:weightSum="8">
+
+                        <ImageView
+                            android:id="@+id/c07"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c17"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c27"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c37"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c47"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c57"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c67"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c77"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+                            android:src="@drawable/caballo"
+                            android:tag="c07"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </TableRow>
+
+                    <TableRow android:weightSum="8">
+
+
+                        <ImageView
+                            android:id="@+id/c06"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c16"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c16"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c26"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c26"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c36"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c36"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c46"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c46"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c56"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c56"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c66"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c66"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c76"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c76"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c06"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </TableRow>
+
+                    <TableRow android:weightSum="8">
+
+                        <ImageView
+                            android:id="@+id/c03"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c03"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c13"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c13"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c23"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c23"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c33"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c33"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c43"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c33"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c53"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c33"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c63"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c33"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c73"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c73"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </TableRow>
+
+                    <TableRow android:weightSum="8">
+
+
+                        <ImageView
+                            android:id="@+id/c04"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c14"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c14"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c24"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c24"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c34"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c34"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c44"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c44"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c54"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c54"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c44"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c64"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c74"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c74"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c04"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </TableRow>
+
+                    <TableRow android:weightSum="8">
+
+                        <ImageView
+                            android:id="@+id/c01"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c01"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c11"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c11"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c21"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c21"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c31"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c31"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c41"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c41"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c51"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c51"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c61"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c61"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c71"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c71"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                    </TableRow>
+
+                    <TableRow android:weightSum="8">
+
+
+                        <ImageView
+                            android:id="@+id/c02"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c12"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c12"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c22"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c22"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c32"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c32"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c22"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c42"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c52"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c52"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c22"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c62"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c72"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/c72"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c02"
+                            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                    </TableRow>
+
+                    <TableRow android:weightSum="8">
+
+                        <ImageView
+                            android:id="@+id/c00"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c00" />
+
+                        <ImageView
+                            android:id="@+id/c10"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c10" />
+
+                        <ImageView
+                            android:id="@+id/c20"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c20" />
+
+                        <ImageView
+                            android:id="@+id/c30"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c30" />
+
+                        <ImageView
+                            android:id="@+id/c40"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c40" />
+
+                        <ImageView
+                            android:id="@+id/c50"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c50" />
+
+                        <ImageView
+                            android:id="@+id/c60"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/white_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c60" />
+
+                        <ImageView
+                            android:id="@+id/c70"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_column="0"
+                            android:layout_weight="1"
+                            android:background="@color/black_call"
+                            android:onClick="checkOnClickListener"
+
+                            android:tag="c70" />
+                    </TableRow>
+
+                </TableLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@color/message_ng"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/tvIntroLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Level 30"
+                        android:textAlignment="center"
+                        android:textSize="70sp"
+                        android:textColor="@color/cardview_dark_background"
+                        android:fontFamily="@font/amaranth_regular"
+                        />
+                    <TextView
+                        android:id="@+id/tvIntroLives"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lives: 1"
+                        android:textAlignment="center"
+                        android:textSize="40sp"
+                        android:textColor="@color/cardview_dark_background"
+                        android:fontFamily="@font/amaranth_regular"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvAction"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="24dp"
+                        android:background="@drawable/bg_background_top"
+                        android:fontFamily="@font/amaranth_regular"
+                        android:onClick="launchActivity"
+                        android:text="Next level"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="30sp" />
+
+                    <ImageButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="24dp"
+                        android:background="@drawable/bg_redondear_dark"
+                        android:src="@drawable/ic_share"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/amaranth_regular"
+                android:text="@string/instructions"
+                android:textAlignment="center"
+                android:textColor="@color/regular"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvCredits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/amaranth_regular"
+                android:text="@string/credits"
+                android:textAlignment="center"
+                android:textColor="@color/regular"
+                android:textSize="14sp" />
+
         </LinearLayout>
+
     </ScrollView>
     <!--Elemento para la publicidad-->
     <LinearLayout
@@ -124,7 +1060,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        >
-    </LinearLayout>
+        android:layout_alignParentTop="true"></LinearLayout>
 </RelativeLayout>
