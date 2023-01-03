@@ -9,15 +9,15 @@
     <color name="regular">#838181</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="black_call">#423327</color>
-    <color name="white_call">#efcf9b</color>
+    <color name="black_cell">#423327</color>
+    <color name="white_cell">#efcf9b</color>
 
     <color name="contrast_data">#a40d0d</color>
     <color name="contrast_data_premiun">#17711b</color>
 
-    <color name="selected_call">#780533</color>
-    <color name="previus_call">#ffa500</color>
-    <color name="enabled_call">#1775a4</color>
+    <color name="selected_cell">#780533</color>
+    <color name="previus_cell">#ffa500</color>
+    <color name="enabled_cell">#1775a4</color>
     <color name="message_ng">#cdfaf8ef</color>
     <color name="white_call_premiun">#eaf7E0</color>
     <color name="black_call_premiun">#185303</color>
