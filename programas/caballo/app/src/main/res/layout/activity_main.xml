@@ -278,7 +278,8 @@
                     android:id="@+id/tlBoard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:gravity="center"
+                    >
                     <!-- crear las casillas -->
                     <!--Las medidas de las height de los image view serán con código-->
 
@@ -1088,7 +1089,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/tvIntroLevel"
+                        android:id="@+id/tvTitleMessage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Level 30"
@@ -1098,7 +1099,7 @@
                         android:fontFamily="@font/amaranth_regular"
                         />
                     <TextView
-                        android:id="@+id/tvIntroLives"
+                        android:id="@+id/tvScoreManager"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Lives: 1"

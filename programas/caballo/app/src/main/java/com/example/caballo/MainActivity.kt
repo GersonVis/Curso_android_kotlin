@@ -6,6 +6,7 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
 import android.widget.TableRow
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.caballo.databinding.ActivityMainBinding
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
     private var options: Int = 0
     private var moves: Int = 64
     private var movesRequire: Int = 4
+    private var bonus: Int = 0
+    private var bonusWidth: Int = 0
+    private var levelMoves: Int = 20
+    private var checkMovement: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -45,67 +50,171 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkedCell(x: Int, y: Int) {
-        if (board[y][x] == 0 || board[y][x] == 9) checkedCaballo(
-            cell_selected_x,
-            cell_selected_y,
-            x,
-            y
-        )
+        if (board[y][x] == 0 || board[y][x] == 9 || board[y][x] == 2) {
+            println("dentro checkedCell")
+            checkedCaballo(
+                cell_selected_x,
+                cell_selected_y,
+                x,
+                y
+            )
+        }
     }
 
     private fun checkedCaballo(x: Int, y: Int, x_touch: Int, y_touch: Int): Unit {
         if (Math.abs(x - x_touch) == 2) {
             if (Math.abs(y - y_touch) == 1) {
                 selectCell(x_touch, y_touch)
+                if(options==0 && !checkMovement) painAllOptions()
                 return
             }
         }
         if (Math.abs(y - y_touch) == 2) {
             if (Math.abs(x - x_touch) == 1) {
                 selectCell(x_touch, y_touch)
+                if(options==0 && !checkMovement) painAllOptions()
                 return
             }
         }
-    }
+        if (!checkMovement) {
+            Toast.makeText(this, "nocheck_primero", Toast.LENGTH_SHORT).show()
+            selectCell(x_touch, y_touch)
+            bonus--
+            binding.tvBonusData.text = if (bonus != 0) bonus.toString() else ""
 
+        }
+    }
+    private fun painAllOptions(){
+        for(y in 0..7){
+            for(x in 0..7){
+                if(board[y][y]!=1 || board[y][x]==2){
+                    board[y][y]=9
+                    paintOption(x, y)
+
+                }
+            }
+        }
+    }
     fun checkOnClickListener(v: View) {
         var name: String = v.tag.toString()
         var x: Int = name.subSequence(1, 2).toString().toInt()
         var y: Int = name.subSequence(2, 3).toString().toInt()
 
-        println("pos x:$x y: $y")
+        println("pulsado")
         checkedCell(x, y)
 
     }
 
+    private fun incrementoBonus(): Unit {
+        bonus++
+    }
+
+    private fun growProgressBonus(): Unit {
+        var moves_done = 64 - moves
+
+        var bonus_done = moves_done / movesRequire
+        var moves_rest = movesRequire * (bonus_done)
+        var bonus_grow = moves_done - moves_rest
+
+        var widthBonus: Float = ((bonusWidth / movesRequire) * bonus_grow).toFloat()
+
+        var heigth = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            8F, getResources().getDisplayMetrics()
+        ).toInt()
+
+        var width = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            widthBonus, getResources().getDisplayMetrics()
+        ).toInt()
+
+        var v = findViewById<View>(R.id.vNewBonus)
+        v.setLayoutParams(TableRow.LayoutParams(width, heigth))
+    }
+
+    private fun showCountOnBonus(x: Int, y: Int, check: Int) {
+        println("el valor de la celda es ${board[y][x]} check:$check ${board[y][x] == check}")
+        if (board[y][x] == check) {
+            incrementoBonus()
+            binding.tvBonusData.text = bonus.toString()
+        }
+    }
+
     private fun selectCell(x: Int, y: Int) {
+        println("dentro selectCell")
         moves--
         showCountOnMoves(moves)
+        showCountOnBonus(x, y, 2)
         board[y][x] = 1
         paintHorseCell(cell_selected_x, cell_selected_y, "previus_cell")
         cell_selected_x = x
         cell_selected_y = y
+        growProgressBonus()
         clearOptions()
-
+        checkedOption(x, y)
         paintHorseCell(x, y, "selected_cell")
 
-        checkedOption(x, y)
-
-        if(moves>0){
+        checkMovement = true
+        if (moves > 0) {
             checkNewBonus()
+            checkGameOver(x, y)
+        } else showMessage("You win", "Next level!", false)
+    }
+
+    private fun checkGameOver(x: Int, y: Int): Unit {
+        if (options == 0) {
+            if (bonus == 0) {
+                showMessage("Game over", "try again!", true)
+            } else {
+                checkMovement = false
+            }
         }
     }
-    private fun checkNewBonus():Unit{
-        
+
+    private fun showMessage(title: String, action: String, gameOver: Boolean): Unit {
+        binding.lyMessage.visibility = View.VISIBLE
+        binding.tvTitleMessage.text = title
+        //  binding.tvAction.text = action
+
+        var score: String = ""
+        if (gameOver) {
+            score = "Score: " + (levelMoves - moves) + "/" + levelMoves
+        } else {
+            score = binding.tvTimeData.text.toString()
+        }
+        binding.tvScoreManager.text = score
+        binding.tvNexLevel.text = action
     }
-    private fun showCountOnMoves(moves: Int): Unit{
+
+    private fun checkNewBonus(): Unit {
+        if (moves % movesRequire == 0) {
+            var bonus_x: Int = 0
+            var bonus_y: Int = 0
+            while (true) {
+                bonus_x = (0..7).random()
+                bonus_y = (0..7).random()
+                if (board[bonus_y][bonus_x] == 0) break
+            }
+            board[bonus_y][bonus_x] = 2
+            paintRequestCell(bonus_x, bonus_y)
+        }
+    }
+
+    private fun paintRequestCell(bonus_x: Int, bonus_y: Int): Unit {
+        var iv =
+            findViewById<ImageView>(resources.getIdentifier("c$bonus_x$bonus_y", "id", packageName))
+        iv.setImageResource(R.drawable.bonus)
+    }
+
+    private fun showCountOnMoves(moves: Int): Unit {
         binding.tbMovesData.text = moves.toString()
     }
+
     private fun clearOptions(): Unit {
         for (y in 0..7) {
             for (x in 0..7) {
                 var contenido: Int = board[y][x]
-                if (contenido == 9 || contenido == 2) {
+                if (contenido == 9) {
                     board[y][x] = 0
                     clearOption(x, y)
                 }
@@ -136,6 +245,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkedOption(x: Int, y: Int): Unit {
+        //  if (checkMovement) {
         options = 0
         checkedMove(x, y, 1, 2)
         checkedMove(x, y, 2, 1)
@@ -145,11 +255,19 @@ class MainActivity : AppCompatActivity() {
         checkedMove(x, y, -2, 1)
         checkedMove(x, y, -1, -2)
         checkedMove(x, y, -2, -1)
-
-        for((l, a) in board.zip(0..8)){
-            println("$a, ${l.joinToString()}")
-        }
+        /*   for ((l, a) in board.zip(0..8)) {
+               println("$a, ${l.joinToString()}")
+           }*/
         showCountOnOption(options)
+        //  }
+        /*else{
+          if(board[y][x]!=1){
+              Toast.makeText(this, "nocheck estamos", Toast.LENGTH_SHORT).show()
+
+              binding.tvBonusData.text = if(bonus!=0) bonus.toString() else ""
+          }
+      }*/
+
 
     }
 
@@ -162,7 +280,7 @@ class MainActivity : AppCompatActivity() {
                 options++
 
                 paintOption(option_x, option_y)
-                board[option_y][option_x] = 9
+                if (board[option_y][option_x] != 2) board[option_y][option_x] = 9
 
             }
         }
@@ -234,7 +352,7 @@ class MainActivity : AppCompatActivity() {
         var width_cell = (width_dp-lateralMargin)/8
         var heigth_cell = width_cell
 
-
+        bonusWidth = 2 * width_cell.toInt()
         for(i in 0..7){
             for(j in 0..7){
 
