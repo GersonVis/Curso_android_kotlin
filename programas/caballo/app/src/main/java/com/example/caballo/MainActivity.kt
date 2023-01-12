@@ -2,6 +2,8 @@ package com.example.caballo
 
 import android.graphics.Point
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
@@ -10,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.caballo.databinding.ActivityMainBinding
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,13 +27,20 @@ class MainActivity : AppCompatActivity() {
     private var bonusWidth: Int = 0
     private var levelMoves: Int = 20
     private var checkMovement: Boolean = true
+    private var nameBlackColor: String = "black_cell"
+    private var nameWhiteColor: String = "white_cell"
+    private var gaming: Boolean = true
+
+    //contador
+    private var mHandler: Handler? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        resetBoard()
-        setFirstPosition()
+        //resetBoard()
+        // setFirstPosition()
         initScreenGame()
+        startGame()
     }
 
     private fun resetBoard(): Unit {
@@ -84,17 +94,88 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    private fun painAllOptions(){
-        for(y in 0..7){
-            for(x in 0..7){
-                if(board[y][y]!=1 || board[y][x]==2){
-                    board[y][y]=9
+
+    private fun resetTime(): Unit {
+        mHandler?.removeCallbacks(chronometer)
+        timeInSeconds = 0
+
+        binding.tvTimeData.text = "00:00"
+    }
+
+    private fun startTime(): Unit {
+        mHandler = Handler(Looper.getMainLooper())
+        chronometer.run()
+    }
+
+    private var timeInSeconds: Long = 0
+    private fun updateStopWatchView(timeInSeconds: Long): Unit {
+        val formattedTime = getFormattedStopWatch(timeInSeconds * 1000)
+        binding.tvTimeData.text = formattedTime
+    }
+
+    private fun getFormattedStopWatch(ms: Long): String {
+        var miliSeconds = ms
+        val minutes = TimeUnit.MILLISECONDS.toMinutes(ms)
+        miliSeconds -= TimeUnit.MINUTES.toMillis(minutes)
+        val seconds = TimeUnit.MILLISECONDS.toSeconds(miliSeconds)
+        return "${if (minutes < 10) "0" else ""}$minutes:${if (seconds < 10) "0" else ""}$seconds"
+    }
+
+    private var chronometer: Runnable = object : Runnable {
+        override fun run() {
+            try {
+                if(gaming){
+                    timeInSeconds++
+                    updateStopWatchView(timeInSeconds)
+                }
+            } finally {
+                mHandler!!.postDelayed(this, 1000L)
+            }
+        }
+    }
+
+    private fun clearBoard() {
+        var iv: ImageView
+        var colorBlack = ContextCompat.getColor(
+            this,
+            resources.getIdentifier(nameBlackColor, "color", packageName)
+        )
+        var whiteColor = ContextCompat.getColor(
+            this,
+            resources.getIdentifier(nameWhiteColor, "color", packageName)
+        )
+        for (x in 0..7) {
+            for (y in 0..7) {
+                iv = findViewById(resources.getIdentifier("c$x$y", "id", packageName))
+                iv.setImageResource(0)
+                if (checkColorCell(x, y) == "black") iv.setBackgroundColor(colorBlack)
+                else iv.setBackgroundColor(whiteColor)
+            }
+        }
+    }
+
+    private fun startGame() {
+        gaming = true
+        resetBoard()
+        clearBoard()
+        setFirstPosition()
+
+        resetTime()
+        startTime()
+    }
+
+    private fun painAllOptions() {
+        for (y in 0..7) {
+            for (x in 0..7) {
+                if (board[y][y] != 1 || board[y][x] == 2) {
+                    board[y][y] = 9
                     paintOption(x, y)
 
                 }
             }
         }
     }
+
     fun checkOnClickListener(v: View) {
         var name: String = v.tag.toString()
         var x: Int = name.subSequence(1, 2).toString().toInt()
@@ -172,6 +253,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showMessage(title: String, action: String, gameOver: Boolean): Unit {
+        gaming = false
         binding.lyMessage.visibility = View.VISIBLE
         binding.tvTitleMessage.text = title
         //  binding.tvAction.text = action
