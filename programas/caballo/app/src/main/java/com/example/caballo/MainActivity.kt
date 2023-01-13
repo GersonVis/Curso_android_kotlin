@@ -445,7 +445,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        fun compartir():Unit{
 
+        }
 
 
     }
