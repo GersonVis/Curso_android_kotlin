@@ -1,10 +1,18 @@
 package com.example.caballo
 
+import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Point
+import android.media.MediaScannerConnection
+import android.media.audiofx.EnvironmentalReverb
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
+import android.provider.MediaStore
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
@@ -15,6 +23,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
 import com.example.caballo.databinding.ActivityMainBinding
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.jar.Manifest
 
@@ -452,8 +464,78 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    private var bitmap: Bitmap?=null
     fun shareGame():Unit{
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+       binding.root.isDrawingCacheEnabled = true
+        binding.root.buildDrawingCache()
+        bitmap = Bitmap.createBitmap(binding.root.drawingCache)
+        binding.root.isDrawingCacheEnabled = false
+
+        if(bitmap!= null){
+            var idGame= SimpleDateFormat("yyyy/MM/dd").format(Date())
+            idGame=idGame.replace(":", "")
+            idGame=idGame.replace("/", "")
+
+            val path= savedImage(bitmap, "${idGame}.jpg")
+
+            val bmpUri = Uri.parse(path)
+
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                putExtra(Intent.EXTRA_STREAM, bmpUri)
+                putExtra(Intent.EXTRA_TEXT, "mensaje para enviar")
+                type = "image/png"
+            }
+            val finalShareIntent = Intent.createChooser(shareIntent, "selecciona una app")
+            finalShareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            this.startActivity(finalShareIntent)
+
+        }
+
+    }
+    fun savedImage(bitmap: Bitmap?, fileName: String): String?{
+         if(bitmap ==null){
+             return null
+         }
+         if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
+             val contentValues = ContentValues().apply {
+                 put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                 put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+                 put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES+"/Screenshots")
+             }
+
+             val uri= this.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+             if(uri!=null){
+                this.contentResolver.openOutputStream(uri).use {
+                    if(it==null){
+                        return@use
+                    }
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 85, it)
+                    it.flush()
+                    it.close()
+                    MediaScannerConnection.scanFile(this, arrayOf(uri.toString()), null, null)
+
+                }
+
+             }
+             return uri.toString()
+         }
+        val filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES+"/Screenshots").absolutePath
+
+        val dir= File(filePath)
+        if(!dir.exists()) dir.mkdirs()
+        val file = File(dir, fileName)
+        val fOut = FileOutputStream(file)
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 85, fOut)
+        fOut.flush()
+        fOut.close()
+
+        MediaScannerConnection.scanFile(this, arrayOf(file.toString()), null, null)
+        return  filePath
     }
     fun compartir():Unit{
 
