@@ -1,5 +1,6 @@
 package com.example.caballo
 
+import android.content.pm.PackageManager
 import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
@@ -10,9 +11,12 @@ import android.widget.ImageView
 import android.widget.TableRow
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
 import com.example.caballo.databinding.ActivityMainBinding
 import java.util.concurrent.TimeUnit
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -445,10 +449,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fun compartir():Unit{
-
-        }
 
 
+    }
+    fun shareGame():Unit{
+        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+    }
+    fun compartir():Unit{
+
+    }
+    fun launchedShareGame(v: View){
+        shareGame()
     }
 }

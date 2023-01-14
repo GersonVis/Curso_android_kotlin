@@ -1132,7 +1132,7 @@
                         android:background="@drawable/bg_redondear_dark"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_share"
-                        android:onClick="compartir"/>
+                        android:onClick="launchedShareGame"/>
 
                 </LinearLayout>
 
