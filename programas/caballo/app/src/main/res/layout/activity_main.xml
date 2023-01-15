@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:onClick="launchedShareGame"
+       />
     <LinearLayout
         android:id="@+id/lyPremiun"
         android:layout_width="match_parent"
