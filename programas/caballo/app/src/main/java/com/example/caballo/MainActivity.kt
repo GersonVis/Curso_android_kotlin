@@ -66,11 +66,42 @@ class MainActivity : AppCompatActivity() {
         startGame()
         getReadyAds()
 
+        adsNew()
 
 
     }
+    fun showAdsNew():Unit{
+        mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+  override fun onAdClicked() {
+    // Called when a click is recorded for an ad.
+    Log.d(TAG, "Ad was clicked.")
+  }
 
-    var adsNew():Unit{
+  override fun onAdDismissedFullScreenContent() {
+    // Called when ad is dismissed.
+    Log.d(TAG, "Ad dismissed fullscreen content.")
+    mInterstitialAd = null
+  }
+
+  override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+    // Called when ad fails to show.
+    Log.e(TAG, "Ad failed to show fullscreen content.")
+    mInterstitialAd = null
+  }
+
+  override fun onAdImpression() {
+    // Called when an impression is recorded for an ad.
+    Log.d(TAG, "Ad recorded an impression.")
+  }
+
+  override fun onAdShowedFullScreenContent() {
+    // Called when ad is shown.
+    Log.d(TAG, "Ad showed fullscreen content.")
+  }
+}
+    }
+
+    fun adsNew():Unit{
          var adRequest = AdRequest.Builder().build()
 
       InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
