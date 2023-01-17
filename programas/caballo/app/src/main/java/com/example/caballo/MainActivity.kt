@@ -1,8 +1,8 @@
 package com.example.caballo
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Point
 import android.media.MediaScannerConnection
@@ -12,6 +12,7 @@ import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
@@ -22,6 +23,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.caballo.databinding.ActivityMainBinding
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.io.FileOutputStream
@@ -53,11 +57,97 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         //resetBoard()
         // setFirstPosition()
+        initAds()
         initScreenGame()
         startGame()
+        getReadyAds()
 
+
+
+    }
+
+    var adsNew():Unit{
+         var adRequest = AdRequest.Builder().build()
+
+      InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        override fun onAdFailedToLoad(adError: LoadAdError) {
+          Log.d(TAG, adError?.toString())
+          mInterstitialAd = null
+        }
+
+        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+          Log.d(TAG, 'Ad was loaded.')
+          mInterstitialAd = interstitialAd
+        }
+      })
+    }
+
+    var mInterstitialAd: InterstitialAd? = null
+
+    private fun showInterstital():Unit{
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+                override fun onAdClicked() {
+                    // Called when a click is recorded for an ad.
+                  //  Log.d(TAG, "Ad was clicked.")
+                }
+
+                override fun onAdDismissedFullScreenContent() {
+                    // Called when ad is dismissed.
+                 //   Log.d(TAG, "Ad dismissed fullscreen content.")
+                    mInterstitialAd = null
+                }
+
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    // Called when ad fails to show.
+                 //   Log.e(TAG, "Ad failed to show fullscreen content.")
+                    mInterstitialAd = null
+                }
+
+                override fun onAdImpression() {
+                    // Called when an impression is recorded for an ad.
+                 //   Log.d(TAG, "Ad recorded an impression.")
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    // Called when ad is shown.
+                  //  Log.d(TAG, "Ad showed fullscreen content.")
+                }
+            }
+            mInterstitialAd?.show(this)
+        }
+    }
+
+    private fun getReadyAds():Unit{
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+             //   adError?.toString()?.let { Log.d(TAG, it) }
+                mInterstitialAd = null
+            }
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+               // Log.d(TAG, "Ad was loaded.")
+                mInterstitialAd = interstitialAd
+            }
+        })
+    }
+
+    private fun initAds(): Unit {
+        MobileAds.initialize(this) {}
+
+        val adView = AdView(this)
+        adView.setAdSize(AdSize.BANNER)
+        adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
+
+        binding.lyAdsBanner.addView(adView)
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     private fun resetBoard(): Unit {
@@ -467,11 +557,15 @@ class MainActivity : AppCompatActivity() {
     }
     private var bitmap: Bitmap?=null
     fun shareGame():Unit {
-       // ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
-        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)
-       // permisos.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        // ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION),
+            1
+        )
+        //permisos.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-
+        //shouldShowRequestPermissionRationale(android.Manifest.permission.ACCEPT_HANDOVER)
 
 
     }
