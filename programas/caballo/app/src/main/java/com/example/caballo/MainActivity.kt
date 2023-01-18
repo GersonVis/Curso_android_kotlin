@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     private var nameBlackColor: String = "black_cell"
     private var nameWhiteColor: String = "white_cell"
     private var gaming: Boolean = true
+    private var unloaded: Boolean = true
 
     //contador
     private var mHandler: Handler? = null
@@ -70,48 +71,19 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    fun showAdsNew():Unit{
-        mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
-  override fun onAdClicked() {
-    // Called when a click is recorded for an ad.
-    Log.d(TAG, "Ad was clicked.")
-  }
 
-  override fun onAdDismissedFullScreenContent() {
-    // Called when ad is dismissed.
-    Log.d(TAG, "Ad dismissed fullscreen content.")
-    mInterstitialAd = null
-  }
-
-  override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-    // Called when ad fails to show.
-    Log.e(TAG, "Ad failed to show fullscreen content.")
-    mInterstitialAd = null
-  }
-
-  override fun onAdImpression() {
-    // Called when an impression is recorded for an ad.
-    Log.d(TAG, "Ad recorded an impression.")
-  }
-
-  override fun onAdShowedFullScreenContent() {
-    // Called when ad is shown.
-    Log.d(TAG, "Ad showed fullscreen content.")
-  }
-}
-    }
 
     fun adsNew():Unit{
          var adRequest = AdRequest.Builder().build()
 
       InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
         override fun onAdFailedToLoad(adError: LoadAdError) {
-          Log.d(TAG, adError?.toString())
+
           mInterstitialAd = null
         }
 
         override fun onAdLoaded(interstitialAd: InterstitialAd) {
-          Log.d(TAG, 'Ad was loaded.')
+
           mInterstitialAd = interstitialAd
         }
       })
@@ -155,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getReadyAds():Unit{
         var adRequest = AdRequest.Builder().build()
-
+unloaded=false
         InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
              //   adError?.toString()?.let { Log.d(TAG, it) }
@@ -166,6 +138,34 @@ class MainActivity : AppCompatActivity() {
                 mInterstitialAd = interstitialAd
             }
         })
+    }
+    private fun showInterstitial():Unit
+    {
+        if (mInterstitialAd != null) {
+            unloaded = true
+            mInterstitialAd?.show(this)
+            mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+                override fun onAdClicked() {
+                    // Called when a click is recorded for an ad.
+                    Log.d(TAG, "Ad was clicked.")
+                }
+
+                override fun onAdDismissedFullScreenContent() {
+                    // Called when ad is dismissed.
+                    Log.d(TAG, "Ad dismissed fullscreen content.")
+                    mInterstitialAd = null
+                }
+                override fun onAdImpression() {
+                    // Called when an impression is recorded for an ad.
+                    Log.d(TAG, "Ad recorded an impression.")
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    // Called when ad is shown.
+                    Log.d(TAG, "Ad showed fullscreen content.")
+                }
+            }
+        }
     }
 
     private fun initAds(): Unit {
@@ -294,6 +294,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun startGame() {
         gaming = true
+        if(unloaded){
+            getReadyAds()
+        }
         resetBoard()
         clearBoard()
         setFirstPosition()
@@ -384,6 +387,7 @@ class MainActivity : AppCompatActivity() {
         if (options == 0) {
             if (bonus == 0) {
                 showMessage("Game over", "try again!", true)
+                showInterstitial()
             } else {
                 checkMovement = false
             }
