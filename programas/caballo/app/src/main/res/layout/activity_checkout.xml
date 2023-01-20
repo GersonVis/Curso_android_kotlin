@@ -69,18 +69,24 @@
             android:id="@+id/ivUpgrade"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_above="@id/buUpgrade"
+            android:layout_above="@id/pay_button"
             android:layout_weight="1"
             android:src="@drawable/kings" />
 
         <Button
-            android:id="@+id/buUpgrade"
+            android:id="@+id/pay_button"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="12dp"
             android:background="@drawable/bg_prioridad_alta"
             android:text="UPGRADE" />
+        <Button
+            android:id="@+id/address_button"
+            android:text="Add shipping address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          />
 
     </RelativeLayout>
 </LinearLayout>
