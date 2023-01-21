@@ -54,14 +54,33 @@ class MainActivity : AppCompatActivity() {
     //contador
     private var mHandler: Handler? = null
 
+    fun launchPaymentCard(v: View) {
+        Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show()
+        var intent = Intent(this, CheckoutActivity::class.java)
+        startActivity(intent)
+        //  callPayment()
+    }
+
+    fun prueba() {
+        println("pulsado")
+    }
+
+    private fun callPayment(): Unit {
+        //  var publicStripe: String = "pk_test_wk6O7Cc5k3McBIG2Hut2irGs"
+        //  PaymentConfiguration.init(applicationContext, publicStripe)
+
+        var activityPay = Intent(this, CheckoutActivity::class.java)
+        startActivity(activityPay)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-        //resetBoard()
-        // setFirstPosition()
+        resetBoard()
+        setFirstPosition()
         initAds()
         initScreenGame()
         startGame()
