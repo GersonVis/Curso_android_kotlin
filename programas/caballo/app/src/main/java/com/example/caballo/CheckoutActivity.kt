@@ -3,6 +3,7 @@ package com.example.caballo
 
 
 
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.util.Log
@@ -26,6 +27,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOError
 import java.io.IOException
+import java.security.KeyStore.TrustedCertificateEntry
 
 class CheckoutActivity : AppCompatActivity() {
     companion object {
@@ -52,11 +54,14 @@ class CheckoutActivity : AppCompatActivity() {
     title: “Shipping Address”,
     googlePlacesApiKey = “(optional) YOUR KEY HERE”
     )*/
-
+    private var level: Int? =1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
+        val bundle = intent.extras
+        level=bundle?.getInt("Level")
+        if(level==null)level=1
         // Hook up the pay button
         payButton = findViewById(R.id.pay_button)
         payButton.setOnClickListener(::onPayClicked)
@@ -118,14 +123,14 @@ class CheckoutActivity : AppCompatActivity() {
     private fun fetchPaymentIntent() {
         val url = "$BACKEND_URL/create-payment-intent"
 
-        val aumont = 200.0f
+        val amount = 200.0f
         val payMap: MutableMap<String, Any> =HashMap()
         val itemMap: MutableMap<String, Any> =HashMap()
         val itemList: MutableList<MutableMap<String, Any>> = ArrayList()
 
         payMap.put("currency", "usd")
         itemMap.put("id", "photo-suscription")
-        itemMap.put("aumont", aumont)
+        itemMap.put("amount", amount)
 
         itemList.add(itemMap)
         payMap.put("items", itemList)
@@ -194,7 +199,8 @@ class CheckoutActivity : AppCompatActivity() {
     private fun onPaymentSheetResult(paymentResult: PaymentSheetResult) {
         when (paymentResult) {
             is PaymentSheetResult.Completed -> {
-                showToast("Payment complete!")
+               // showToast("Payment complete!")
+                becamePremiun()
             }
             is PaymentSheetResult.Canceled -> {
                 Log.i(TAG, "Payment canceled!")
@@ -203,6 +209,15 @@ class CheckoutActivity : AppCompatActivity() {
                 showAlert("Payment failed", paymentResult.error.localizedMessage)
             }
         }
+    }
+    private fun becamePremiun():Unit{
+        var sharedPreferences: SharedPreferences
+        sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+        var editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("PREMIUN", true)
+            putInt("Level", level!!)
+        }.apply()
     }
 
  /*   private fun onAddressLauncherResult(result: AddressLauncherResult) {

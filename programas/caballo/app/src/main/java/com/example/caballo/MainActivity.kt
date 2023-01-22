@@ -27,6 +27,7 @@ import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.snackbar.Snackbar
+import com.stripe.android.PaymentConfiguration
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -66,10 +67,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun callPayment(): Unit {
-        //  var publicStripe: String = "pk_test_wk6O7Cc5k3McBIG2Hut2irGs"
-        //  PaymentConfiguration.init(applicationContext, publicStripe)
+        var publicStripe: String = "pk_test_wk6O7Cc5k3McBIG2Hut2irGs"
+        PaymentConfiguration.init(applicationContext, publicStripe)
 
         var activityPay = Intent(this, CheckoutActivity::class.java)
+        activityPay.putExtra("Level", levelMoves)
         startActivity(activityPay)
     }
 
