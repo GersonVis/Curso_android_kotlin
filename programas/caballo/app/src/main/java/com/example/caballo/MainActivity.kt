@@ -3,8 +3,10 @@ package com.example.caballo
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Point
+import android.media.MediaPlayer
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
@@ -52,9 +54,23 @@ class MainActivity : AppCompatActivity() {
     private var gaming: Boolean = true
     private var unloaded: Boolean = true
 
+    private var optionBlack = R.drawable.option_black
+    private var optionWhite = R.drawable.option_white
+
+    //preferences
+    private lateinit var sharedPreferenes: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+
     //contador
     private var mHandler: Handler? = null
 
+    //se hizo el pago de premiun
+    private var premiun: Boolean = false
+    //sonidos
+    private lateinit var mpMovement: MediaPlayer
+    private lateinit var mpBonus: MediaPlayer
+    private lateinit var mpGameOver: MediaPlayer
+    private lateinit var mpYouWin: MediaPlayer
     fun launchPaymentCard(v: View) {
         Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show()
         var intent = Intent(this, CheckoutActivity::class.java)
@@ -79,8 +95,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        initSounds()
+        initPreferences()
         resetBoard()
         setFirstPosition()
         initAds()
@@ -89,21 +105,66 @@ class MainActivity : AppCompatActivity() {
         getReadyAds()
 
         adsNew()
+    }
+   private fun initSounds():Unit{
+       mpMovement = MediaPlayer.create(this, R.raw.ejedrez)
+       mpMovement.isLooping=false
 
+       mpBonus = MediaPlayer.create(this, R.raw.bonus)
+       mpBonus.isLooping=false
 
+       mpGameOver = MediaPlayer.create(this, R.raw.gameover)
+       mpGameOver.isLooping=false
+
+       mpYouWin = MediaPlayer.create(this, R.raw.youwin)
+       mpYouWin.isLooping=false
+   }
+    private fun initPreferences(): Unit {
+        sharedPreferenes = getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+        editor = sharedPreferenes.edit()
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkPremiun()
+        startGame()
+    }
 
-    fun adsNew():Unit{
-         var adRequest = AdRequest.Builder().build()
+    private fun checkPremiun(): Unit {
+        premiun = sharedPreferenes.getBoolean("PREMIUN", false)
+        if(premiun){
+            binding.lyPremiun.removeAllViews()
+            binding.lyAdsBanner.removeAllViews()
+            binding.svGame.setPadding(0,0,0,0)
 
-      InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
-        override fun onAdFailedToLoad(adError: LoadAdError) {
+            binding.tvLiveData.background = getDrawable(R.drawable.bg_bottom_contrast_premiun)
+            binding.tvLiveTitle.background = getDrawable(R.drawable.bg_bottom_contrast_premiun)
 
-          mInterstitialAd = null
+            binding.vNewBonus.setBackgroundColor(ContextCompat.getColor(this,
+            resources.getIdentifier("contrast_data_premiun", "color", packageName)))
+
+            optionBlack = R.drawable.option_black_premiun
+            optionWhite = R.drawable.option_white_premiun
+
+        }else{
+            initAds()
         }
+    }
 
-        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+    fun adsNew(): Unit {
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
 
           mInterstitialAd = interstitialAd
         }
@@ -315,7 +376,7 @@ unloaded=false
 
     private fun startGame() {
         gaming = true
-        if(unloaded){
+        if(unloaded && !premiun){
             getReadyAds()
         }
         resetBoard()
@@ -385,6 +446,7 @@ unloaded=false
 
     private fun selectCell(x: Int, y: Int) {
         println("dentro selectCell")
+        mpMovement.start()
         moves--
         showCountOnMoves(moves)
         showCountOnBonus(x, y, 2)
@@ -407,9 +469,12 @@ unloaded=false
     private fun checkGameOver(x: Int, y: Int): Unit {
         if (options == 0) {
             if (bonus == 0) {
+                mpGameOver.start()
                 showMessage("Game over", "try again!", true)
-                showInterstitial()
+                if(!premiun)showInterstitial()
+
             } else {
+                mpYouWin.start()
                 checkMovement = false
             }
         }
@@ -442,6 +507,7 @@ unloaded=false
             }
             board[bonus_y][bonus_x] = 2
             paintRequestCell(bonus_x, bonus_y)
+            mpBonus.start()
         }
     }
 
@@ -545,8 +611,8 @@ unloaded=false
                 option_x,
                 option_y
             ) == "black"
-        ) iv.setBackgroundResource(R.drawable.option_black)
-        else iv.setBackgroundResource(R.drawable.option_white)
+        ) iv.setBackgroundResource(optionBlack)
+        else iv.setBackgroundResource(optionWhite)
     }
 
     private fun checkColorCell(x: Int, y: Int): String {

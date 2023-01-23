@@ -1168,12 +1168,12 @@
 
     </ScrollView>
     <!--Elemento para la publicidad-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/lyAdsBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"></LinearLayout>
+        android:layout_alignParentBottom="true"></RelativeLayout>
 
 
 </RelativeLayout>

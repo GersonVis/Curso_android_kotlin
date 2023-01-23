@@ -3,6 +3,7 @@ package com.example.caballo
 
 
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -218,6 +219,8 @@ class CheckoutActivity : AppCompatActivity() {
             putBoolean("PREMIUN", true)
             putInt("Level", level!!)
         }.apply()
+        var intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
  /*   private fun onAddressLauncherResult(result: AddressLauncherResult) {
